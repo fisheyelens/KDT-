@@ -1,0 +1,427 @@
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/bba05f61-7842-45d9-9b32-114cd512f1ae/ee3a5015-9de9-441a-b411-20d1cf3d542d/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/bba05f61-7842-45d9-9b32-114cd512f1ae/996ae9b2-c9ac-49ff-abb1-86b4105bd0da/Untitled.png)
+
+# Code Reading Practice
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enhanced Todo List Example</title>
+</head>
+<body>
+<div id="root"></div>
+<input id="todo-input" type="text" placeholder="할 일을 입력하세요">
+<select id="order-select" title="Order Select"></select>
+<button id="add-button">항목 추가</button>
+<button id="remove-button">항목 제거</button>
+<script>
+let root = document.getElementById('root');
+let addButton = document.getElementById('add-button');
+let removeButton = document.getElementById('remove-button');
+let todoInput = document.getElementById('todo-input');
+let orderSelect = document.getElementById('order-select');
+let todoItems = [];
+
+```
+function updateSelectOptions() {
+  let length = todoItems.length;
+  orderSelect.innerHTML = '';
+  for (let i = 0; i < length; i++) {
+    let option = document.createElement('option');
+    option.value = i;
+    option.text = `항목 ${i + 1}`;
+    orderSelect.appendChild(option);
+  }
+  let lastOption = document.createElement('option');
+  lastOption.value = "마지막";
+  lastOption.text = "마지막";
+  orderSelect.appendChild(lastOption); // Adding 'Last' option at the end of the list
+}
+
+function updateView() {
+  root.innerHTML = '';
+  for (let i = 0; i < todoItems.length; i++) {
+    let itemElement = document.createElement('p');
+    itemElement.textContent = `${todoItems[i]}`;
+    root.appendChild(itemElement);
+  }
+  updateSelectOptions();
+}
+
+function getInputValue() {
+  return todoInput.value.trim();
+}
+
+function getOrder() {
+  let orderValue = orderSelect.value;
+  if (orderValue === '마지막') {
+    return todoItems.length - 1;
+  } else {
+    return parseInt(orderValue);
+  }
+}
+
+function addItem() {
+  let newItem = getInputValue();
+  let order = getOrder();
+  if (newItem !== "") {
+    if (order === todoItems.length - 1) {
+      todoItems.push(newItem); // Add at the end
+    } else {
+      todoItems.splice(order, 0, newItem);
+    }
+    updateView();
+    todoInput.value = ''; // Clear input after adding
+  } else {
+    console.error('할 일을 입력해야 합니다.');
+  }
+}
+
+function removeItem() {
+  let order = getOrder();
+  if (order >= 0 && order < todoItems.length) {
+    todoItems.splice(order, 1);
+    updateView();
+  } else {
+    console.error('유효하지 않은 순서입니다.');
+  }
+}
+
+addButton.addEventListener('click', addItem);
+removeButton.addEventListener('click', removeItem);
+updateSelectOptions(); // Initialize select options
+
+```
+
+</script>
+</body>
+</html>
+
+## → 이것을 분해하는 것!!!
+
+---
+
+## 온라인 서치
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/bba05f61-7842-45d9-9b32-114cd512f1ae/5d743b14-24bf-4007-9b50-c84ac51b86c2/Untitled.png)
+
+## → 뭔 말인지 모르겠다.
+
+{}에다가 넣으란 건지 뭔..
+
+## mdn
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/bba05f61-7842-45d9-9b32-114cd512f1ae/aeb97d96-59af-4c4b-842e-6a82f94d60f3/Untitled.png)
+
+## [Syntax](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event#syntax)
+
+Use the event name in methods like `[addEventListener()](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)`, or set an event handler property.
+
+JSCopy to Clipboard
+
+```
+addEventListener("click", (event) => {});
+
+onclick = (event) => {};
+
+```
+
+## [Event type](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event#event_type)
+
+A `[PointerEvent](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent)`. Inherits from `[MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)`.
+
+[EventUIEventMouseEventPointerEvent
+
+**Note:** In earlier versions of the specification the event type for this event was a `[MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)`, and this is still the type passed in Firefox and Safari.
+
+## 
+
+## [Examples](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event#examples)
+
+This example displays the number of consecutive clicks on a `[<button>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)`.
+
+### [HTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event#html)
+
+HTMLPlayCopy to Clipboard
+
+```html
+<button>Click</button>
+```
+
+### [JavaScript](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event#javascript)
+
+JSPlayCopy to Clipboard
+
+```
+const button = document.querySelector("button");
+
+button.addEventListener("click", (event) => {
+  button.textContent = `Click count: ${event.detail}`;
+});
+```
+
+---
+
+additem = 뭔가 쓰면 item이 length-1로 추가됨.
+'' 값이 없으먖 할일입력하라는 명령 나옴
+
+removeitem = 뭔가 순서관련, todoitem 내용을 가지고 알아서 작동,
+error가 뜨면 유효하지 않다고 경고
+
+이미 써있는 것
+
+1. 클릭시 additem 이 나옴
+2. 클릭시 removeitem 이 나옴
+
+# < 각각의 함수 의사 표현 >
+
+1. **updateSelectOptions :**
+    
+    **( 입력 인자 ) { 실행 }**
+    
+    length가 todoItems의 length라고 가정한다면
+    
+    orderselect(특정 거래에 대한 데이터를 가져오거나, 주문 수정, 청산 기능) 
+    
+    가져오거나 / 수정하거나 / 삭제해라
+    
+    innerHTML( gets or sets the HTML or XML markup contained within the element.  (-내 생각이긴 한데, 뒤에 =값 다음 나오는 요소-  해당 요소가 포함된  HTML이나 XML 마크업을 가져오거나, 설정한다.)
+    
+    그래서 function 함수이름(event)
+    {
+    if()
+    {
+    수행하는 내용작성..
+    }
+    }
+    
+    addEventListener 등록하는 함수는 매개변수 하나를 받을 수 있거든,
+    그 매개변수 내용에는 어떤 키가 눌려졌는지, 눌린 시각이 언제인지, 어떤 객체(target)(버튼 등)가 눌린 건지 정보를 담고 있거든,
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/bba05f61-7842-45d9-9b32-114cd512f1ae/0d6544ea-446f-4833-af09-10c344d0fc60/Untitled.png)
+    
+    [JavaScript Key Code Event Tool | Toptal®](https://www.toptal.com/developers/keycode)
+    
+    **< 코드 리딩 원본 >**
+    
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Enhanced Todo List Example</title>
+    </head>
+    <body>
+      <div id="root"></div>
+      <input id="todo-input" type="text" placeholder="할 일을 입력하세요">
+      <select id="order-select" title="Order Select"></select>
+      <button id="add-button">항목 추가</button>
+      <button id="remove-button">항목 제거</button>
+      <script>
+        let root = document.getElementById('root');
+        let addButton = document.getElementById('add-button');
+        let removeButton = document.getElementById('remove-button');
+        let todoInput = document.getElementById('todo-input');
+        let orderSelect = document.getElementById('order-select');
+        let todoItems = [];
+    
+        function updateSelectOptions() {
+          let length = todoItems.length;
+          orderSelect.innerHTML = '';
+          for (let i = 0; i < length; i++) {
+            let option = document.createElement('option');
+            option.value = i;
+            option.text = `항목 ${i + 1}`;
+            orderSelect.appendChild(option);
+          }
+          let lastOption = document.createElement('option');
+          lastOption.value = "마지막";
+          lastOption.text = "마지막";
+          orderSelect.appendChild(lastOption); // Adding 'Last' option at the end of the list
+        }
+    
+        function updateView() {
+          root.innerHTML = '';
+          for (let i = 0; i < todoItems.length; i++) {
+            let itemElement = document.createElement('p');
+            itemElement.textContent = `${todoItems[i]}`;
+            root.appendChild(itemElement);
+          }
+          updateSelectOptions();
+        }
+    
+        function getInputValue() {
+          return todoInput.value.trim();
+        }
+    
+        function getOrder() {
+          let orderValue = orderSelect.value;
+          if (orderValue === '마지막') {
+            return todoItems.length - 1;
+          } else {
+            return parseInt(orderValue);
+          }
+        }
+    
+        function addItem() {
+          let newItem = getInputValue();
+          let order = getOrder();
+          if (newItem !== "") {
+            if (order === todoItems.length - 1) {
+              todoItems.push(newItem); // Add at the end
+            } else {
+              todoItems.splice(order, 0, newItem);
+            }
+            updateView();
+            todoInput.value = ''; // Clear input after adding
+          } else {
+            console.error('할 일을 입력해야 합니다.');
+          }
+        }
+    
+        function removeItem() {
+          let order = getOrder();
+          if (order >= 0 && order < todoItems.length) {
+            todoItems.splice(order, 1);
+            updateView();
+          } else {
+            console.error('유효하지 않은 순서입니다.');
+          }
+        }
+    
+        addButton.addEventListener('click', addItem);
+        removeButton.addEventListener('click', removeItem);
+        updateSelectOptions(); // Initialize select options
+      </script>
+    </body>
+    </html>
+    ```
+    
+    Task : 버튼 클릭 기능에 더불어, enter 버튼으로 텍스트 입력 가능하게 만들기
+    
+
+**< 연습 >**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Todo List Example</title>
+</head>
+<body>
+  <div id="root"></div>
+  <input id="todo-input" type="text" placeholder="할 일을 입력하세요">
+  <select id="order-select" title="Order Select"></select>
+  <button id="add-button">항목 추가</button>
+  <button id="remove-button">항목 제거</button>
+
+  <script>
+    let root = document.getElementById('root');
+    let addButton = document.getElementById('add-button');
+    let removeButton = document.getElementById('remove-button');
+    let todoInput = document.getElementById('todo-input');
+    let orderSelect = document.getElementById('order-select');
+    let todoItems = [];
+    
+
+    function updateSelectOptions() {
+      let length = todoItems.length;
+      orderSelect.innerHTML = '';
+      for (let i = 0; i < length; i++) {
+        let option = document.createElement('option');
+        option.value = i;
+        option.text = `항목 ${i + 1}`;
+        orderSelect.appendChild(option);
+      }
+      let lastOption = document.createElement('option');
+      lastOption.value = "마지막";
+      lastOption.text = "마지막";
+      orderSelect.appendChild(lastOption); // Adding 'Last' option at the end of the list
+    }
+
+    function updateView() {
+      root.innerHTML = '';
+      for (let i = 0; i < todoItems.length; i++) {
+        let itemElement = document.createElement('p');
+        itemElement.textContent = `${todoItems[i]}`;
+        root.appendChild(itemElement);
+      }
+      updateSelectOptions();
+    }
+
+    function getInputValue() {
+      return todoInput.value.trim();
+    }
+
+    function getOrder() {
+      let orderValue = orderSelect.value;
+      if (orderValue === '마지막') {
+        return todoItems.length - 1;
+      } else {
+        return parseInt(orderValue);
+      }
+    }
+
+    function addItem() {
+      let newItem = getInputValue();
+      let order = getOrder();
+      if (newItem !== "") {
+        if (order === todoItems.length - 1) {
+          todoItems.push(newItem); // Add at the end
+        } else {
+          todoItems.splice(order, 0, newItem);
+        }
+        updateView();
+        todoInput.value = ''; // Clear input after adding
+      } else {
+        console.error('할 일을 입력해야 합니다.');
+      }
+    }
+
+    function removeItem() {
+      let order = getOrder();
+      if (order >= 0 && order < todoItems.length) {
+        todoItems.splice(order, 1);
+        updateView();
+      } else {
+        console.error('유효하지 않은 순서입니다.');
+      }
+    }
+
+function enterkeyworks(){
+if(event.key == 'enter'){enter.addEventListener("keypress",(addItem))}
+}
+
+//  enterkey라는 함수를 만들건데 , 그 함수의 조건은, 만약 문서에 이벤트 현상이 일어난다. 
+
+// 1번 
+document.querySelector("getInputValue").addEventListener('keyup', function (e) {
+    if (e.key === 'Enter') { 
+      // code for enter
+    }
+});
+
+//  }
+
+// 2번
+
+document.querySelector('#txtSearch').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      // code for enter
+    }
+});
+    enterkey.addEventListener('enterkey',addItem);
+    addButton.addEventListener('click', addItem);
+    removeButton.addEventListener('click', removeItem);
+    updateSelectOptions(); // Initialize select options
+  </script>
+</body>
+</html>
+
+```
