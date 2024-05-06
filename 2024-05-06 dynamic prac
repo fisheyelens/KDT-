@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <ul></ul>
+  </div>
+
+  <script>
+
+let root = document.getElementById("root");
+let ultag = root.firstElementChild;
+
+// 화면에 리스트 찍힌 이유는 . 바디-디브=유엘 테그 밑에- 엘아이 테그로 넗었기 때문이지!
+var names = [
+  "구하림",
+  "김보미",
+  "김수현",
+  "김정수",
+  "문혜림",
+  "배성빈",
+  "백지원",
+  "송이현",
+  "신지윤",
+  "유으뜸",
+  "유호영",
+  "이연승",
+  "이재영",
+  "이종수",
+  "임유진",
+  "정호연",
+  "조우식",
+  "조자연",
+  "최유진",
+  "황재민"
+];
+
+
+function rotatingNames () {
+  for  ( let i=0; i<names.length;i++ ) {
+
+//  선언은 미리 해야함. 컴터가 몰라서
+    let li = document.createElement("li");
+    li.textContent = names[i];
+    ultag.appendChild(li);
+  }
+}
+
+rotatingNames();
+
+// <li> 태그에 우리 동기 멤버들 이름을 동적 명령으로 작성하세요
+
+  </script>
+
+</body>
+</html>
