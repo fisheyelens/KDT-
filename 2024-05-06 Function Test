@@ -1,0 +1,22 @@
+
+function getJeewonState(full)
+{
+  if(full > 90)
+    return 'happy';
+  else if(full > 50)
+    return 'normal';
+  else if(full > 20)
+    return 'hungry';
+  else
+    return 'angry';
+}
+
+let h = 0;
+
+let test = 'dddd';
+
+let ssddf = [0,1,2,2,3];
+
+
+let state = getJeewonState(10);
+console.log(state);
