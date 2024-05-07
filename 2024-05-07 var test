@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+var 테스트1 = 1;
+var 테스트2 = 2;
+
+// 테스트1 재선언
+var 테스트1 = 3;
+
+function 테스트테스트 (param){
+  var parara =param + param
+  return parara;
+}
+
+
+var 찐테스트 = 테스트테스트(테스트1);
+return  찐테스트;
+
+console.log(찐테스트);
+// 테스트1 이 3 으로 재선언이 잘 되었으면, 6 이 나오겠지!
+
+
+  </script>
+</body>
+</html>
