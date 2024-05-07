@@ -1,0 +1,41 @@
+
+
+let name = '백지원';
+
+console.log("hello" + name);
+
+let http = require('http');
+// 정식은 
+// let http = global.require('http'); 
+// 이다. (자바스크립트가 아니기에. )
+
+let mainDocument = `
+  <html>
+    <body>
+      <h1>hello</h1>
+    </body>
+
+    <script>
+    alert('hello');
+
+  </html>`;
+
+  //  html 요소. global.require 를 만나면 node가 html 이 된다.
+
+  function testServer(request, response) {
+    response.statusCode = 200;
+    response.setHeader('Content-Type', "text/html");
+    response.write(mainDocument);
+    response.end();
+  }
+
+  // 내 컴터에 접속할 항구 만들어주기
+let server = http.createServer(testServer);
+
+server.listen(3000, function() {
+  console.log("야 서버 잘돌아가!");
+  console.log("http://localhost:3000");
+});
+
+
+
