@@ -1,0 +1,41 @@
+// const http = require('http');
+// 
+// console.log(http);
+// console.table(http);
+
+// http는 객체였다 안에 있는것을 조회해 보니까.
+// http.createServer(
+  // 요청과 응답을 어떻게 처리 할 것인가?
+// *무슨 기능을 넣을 것인지?
+// * 문서를 보낼까?
+// *데이터를  보낼까?
+// );
+
+// const server = http.createServer((req, res) => {
+//   res.writeHead(200, { 'Content-Type': 'application/json' });
+//   res.end(JSON.stringify({
+//     data: 'Hello World!',
+//   }));
+// });
+
+// server.listen(8000);
+
+
+const http = require('node:http');
+
+const server = http.createServer((req, res) => {
+  // res.writeHead(200, { 'Content-Type': "text/html" });
+  res.writeHead(200, { 'Content-Type': "text/plain" });
+//  html 에서 plain 하면 담백해짐 플레인이 코드를 읽지 않고 그저 전달만 하는 
+
+  res.end(`
+  <html>
+    <body>
+      <h1>hello</h1>
+    </body>
+  </html>`
+  );
+});
+
+server.listen(8000);
+
