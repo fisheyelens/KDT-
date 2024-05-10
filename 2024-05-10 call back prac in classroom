@@ -2,32 +2,26 @@ function a(a,b) {
   return a+b;
 }
 
-function b(a,b, callback) {//동적
-  callback(a,b); //인자를 전달한다
-  //인수인계한다.
+function b(a,b, callback) {
+  callback(a,b); 
+
 }
 
-//호출할때 함수를 정의해준다.
+
 //addevwntlisten가 대표적 callback함수
 // b(1,2,function(a,b) {
 //   console.log(a + b);
 // })
 
-function add(a,b) { //정적
+function add(a,b) { 
   return a+b;
 }
 
-console.log(b(1, 2, function (a, b) {// 동적
+console.log(b(1, 2, function (a, b) {
   console.log( a + b);
 }));
 
 
-
-
-
-
-//  typeof - 숫자열 곱셈
-//  typeof - 배열이면 덧셈
 
 
 
@@ -45,4 +39,3 @@ b(2,10, function(a,b) {
 
 
 
-// 함수 이름이 없다 - 익명함수
