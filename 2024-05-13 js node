@@ -1,0 +1,15 @@
+const http = require('http');
+// http라는 객체를 선언할거야. 근데 그 http는 진짜 http 를 사용 할 수 있는 http 모듈 을 끌어올거야. (getElementbyId랑 비슷..)
+// require(id) -> id <string> 모듈 이름이나 path 작성. Returns <any> exported module content.
+const server = http.createServer(function(request, response)
+// server라는 객체를 선언할거야. 근데 그 server는 http내에서 server를 창조하는 일을 해.
+// 창조하는 일은 함수를 돌려서 해. 요청과 응답 인자값을 설정해서 말이야.
+// syntax -> https.createServer(options, (req, res) / requestListener = reuest+response
+// createServer -> options, <Oject>에서 허용 된다. requestListener <Function> 이벤트에 추가할 리스너. 반환 : <https.Server>
+{
+console.log(request);
+// console에다가 요청 값을 찍어줘
+});
+
+server.listen(3000);
+//  node에 createServer의 반환은 <https.Server>라고 적혀있는데, 왜 server.listen 이 되는거지.. response 값도 안썼는데
