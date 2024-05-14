@@ -1,0 +1,51 @@
+const http = require('http');
+const fs = require('fs');
+
+
+const server = http.createServer(function(request, response){
+  if(request.method === "GET") {
+    if(request.url === "/") {
+
+      const first = fs.readFileSync("./public/index.html", "utf8");
+      // const first = fs.readFileSync("./public/minam.html", "utf8");
+      // minam.html -> index.html 로 바꾸니 해결 되었다. 눈썰미를 키워야 한다. ( 자연씨 도움 받은 부분 )
+
+      response.statusCode = 200;
+      response.setHeader('Content-Type', 'text/html; charset=utf-8');
+      response.write(first);
+
+      // first  대신에, 따로 html 문서 요소 만들기기
+      // response.write("<html><body><h1>I want to go home</h1></body></html>");
+      // -> 이 방식은 만들어 놓은 html 파일을 끌어오는 것이 아니라, app.js 내에서 html 요소를 만드는 것. 
+
+      response.end();
+    }
+    if(request.url === "/style.css") {
+      const second = fs.readFileSync("./public/style.css");
+      
+      response.statusCode = 200;
+      response.setHeader('Content-Type', 'text/css; charset=utf-8');
+      response.write(second);
+      response.end();
+    }
+      if(request.url === "/index.js") {
+      const third = fs.readFileSync("./public/index.js");
+
+      response.statusCode = 200;
+      response.setHeader('Content-Type', 'text/javascript; charset=utf-8');
+      response.write(third);
+      response.end();
+    }
+    console.log(request.url);
+  }
+});
+server.listen(8080);
+      // 이미 존재하는 서버라고 뜨는 경우, 터미널에 netstat -ano | findstr :8080. 입력 후, TCP 주소를 얻고, taskkill /PID example /F   -> example 에 해당 주소를 적는다.
+
+
+
+
+
+
+
+      
