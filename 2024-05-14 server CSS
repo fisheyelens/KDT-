@@ -1,0 +1,49 @@
+
+
+
+
+
+
+
+body {
+  width: 100vh;
+  height: 100vw;
+}
+
+
+
+
+h1 {
+  color: rgb(239, 14, 14);
+}
+
+
+
+
+
+.bg {
+height: 100%;
+background-position: center;
+background-repeat: space;
+background-size: cover;
+
+}
+
+img {
+width: 100vw;
+height: 100vh;
+border-style: none;
+border-width: 0.1cm;
+
+}
+
+
+
+
+
+
+
+
+
+
+
