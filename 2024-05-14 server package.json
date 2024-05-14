@@ -1,0 +1,14 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "Evaluation",
+  "main": "app.js",
+  "scripts": {
+    "test": "Practice"
+  },
+  "keywords": [
+    "serving"
+  ],
+  "author": "\"백지원\"",
+  "license": "ISC"
+}
