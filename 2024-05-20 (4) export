@@ -1,0 +1,37 @@
+
+const objectLoop = require('./module.objectLoop.js');
+// 코드 따로 뺐던 거=export ( moduel.ob 파일에 옮긴)를 불러온거 
+
+function objectLoop(array, object) {
+  for(let key in object) {
+    array.push(object[key]);
+  }
+}
+objectLoop(values, a);
+objectLoop(values, b);
+//  ctrl 키+ 마우스 오버 하면 안에 전말 보임
+      }
+    }
+    // 를 쓰면 위에 for in 2개를 지울 수 있음
+    // objectLoop로 단축시킴
+    //
+  } catch(error) {
+    console.log(error);
+    console.log("안됨요");
+  }
+}
+
+const a = {first: 1};
+const b = {first: 2};
+
+forObject(a, b);
+
+----------------------------------------
+
+function objectLoop(array, object) {
+  for(let key in object) {
+    array.push(object[key]);
+  }
+}
+
+module.exports = objectLoop;
