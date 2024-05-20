@@ -1,0 +1,23 @@
+// function add(a, b){
+//   return a + b
+// }
+
+// add(1,2);
+//  여기까지만 하면 콘솔에 찍어달라는 말이 없어서 안나온다.
+
+// console.log(add(1,2));
+// 이제야 보인다.
+
+
+function add(a, b){
+  let result = a + b;
+  console.log(result);
+  return result;
+}
+
+//  이렇게 해도 된다.
+
+let someData = add(1,2) + 100;
+console.log(someData);
+
+// 매개변수의 유형은 dataType 까지. 매개변수도 변수이다. parameter도 변수이다.
