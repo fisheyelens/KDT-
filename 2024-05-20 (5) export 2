@@ -1,0 +1,20 @@
+
+// someData export 하기 - module.exports 파일로 같이
+const someData = {
+  a : {first: 1},
+  b : {first: 2}
+}
+const a = {first: 1};
+const b = {first: 2};
+
+--------------------------
+
+const someData = {
+  a : {first: 1},
+  b : {first: 2}
+}
+
+module.exports = someData;
+
+
+
