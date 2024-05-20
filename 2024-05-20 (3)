@@ -1,0 +1,43 @@
+
+
+function forObject(a, b) {
+  try {
+    if (typeof a === "object") {
+      if (typeof b === "object") {
+        let values = [];
+        for(let key in a) {
+          values[0] = a[key];
+          //  코드리딩 - values 만 보기 . 위에 내용은 이미 검증 됐으니까
+          for(let key in b){
+            values[1] = b[key];
+          }
+        }
+        console.log(values);
+        let add = values[0] + values[1];
+        console.log("다 더한값 : ", add);
+
+
+
+      }
+    }
+  } catch(error) {
+    console.log(error);
+    console.log("안됨요");
+  }
+}
+
+const a = {first: 1};
+const b = {first: 2};
+
+forObject(a, b);
+
+//  이 과정은 post를 위해서, 그리고 chunk 라는 것을 쓸 때 패턴 중 하나이다..
+
+//  시나리오
+//  입력으로 뭐가 자꾸 들어옴
+// 들어오는 것들이 자꾸 객체여
+// 객체를 반복 처리, 실행 하고 싶을 때가 너무 많다
+// 이때 비장의 카드 for in 문
+// 지역변수 배열 초기화
+// -> 다 내가 편하자고 쓰는거
+// 필요에 따라서는 안써도 된다
