@@ -1,0 +1,27 @@
+
+const fs = require("fs");
+const nowNalJJa = require("./nowNallja(4).js");
+
+// s내가 만든 함수는 ctrl 클릭하면 바로 나온다.
+
+console.log(nowNalJJa());
+
+
+const test = fs.writeFileSync(`${nowNalJJa()}-text.txt`, "hello","utf-8", function(error) {
+  if(error) {
+    console.log("파일만드는 것 에러");
+    console.log("에러 내용 : ", error);
+  }
+  console.log("잘 저장되엇슈");
+});
+
+------------------------------------------------------
+function nowNalJJa() {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  return year + "-" + month + "-" + day;
+}
+
+module.exports = nowNalJJa;
