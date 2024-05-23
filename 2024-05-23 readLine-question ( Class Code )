@@ -1,0 +1,23 @@
+
+const rl = require('readline');
+// console.dir(rl);
+
+let inOut = {
+  input: process.stdin,
+  output: process.stdout,
+};
+
+const readLine = rl.createInterface(inOut);
+
+readLine.question("너의 이름은 무엇입니까? : ", function(answer){
+  console.log("니가쓴 대답은 :", answer);
+  readLine.close();
+});
+
+
+Result :
+
+PS C:\Users\jeewo\OneDrive\바탕 화면\2024-05-23> node app1.js
+너의 이름은 무엇입니까? : Alice
+니가쓴 대답은 : Alice
+PS C:\Users\jeewo\OneDrive\바탕 화면\2024-05-23> 
