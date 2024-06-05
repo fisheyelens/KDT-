@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id ="root"></div>
+<script>
+
+const daejeonAJAX = () => {
+  const xhr = new XMLHttpRequest();
+  console.dir("데이터 받기 전 조회 : " + xhr);
+xhr.open("GET","https://Daejeon.co/api/v2/pokemon/",true);
+
+xhr.addEventListener("load", ()=>{
+  if (xhr.status === 200) {
+    console.log("데이터 받은 후 조회");
+    console.dir(xhr);
+
+    const result = JSON.parse(xhr.responseText);
+    console.dir(result);
+
+    const daejeon = result.results;
+    console.dir(daejeon);
+
+
+const root = document.getElementById("root");
+const ul = document.createElement("ul");
+daejeon.forEach((ggumdol) => {
+  const li = document.createElement("li");
+  li.textContent = daejeon.name;
+  ul.appendchild(li);
+});
+root.appendchild(ul);
+  }
+});
+xhr.send();
+};
+
+daejeonAJAX();
+
+</script>
+
+</body>
+</html>
